@@ -1,0 +1,393 @@
+/*
+ * Copyright 2017 Firefly Semantics Corporation
+ * Copyright 2017 Ole Ersoy
+ * Copyright 2017 superflycss
+ * Copyright 2011 Twitter, Inc.
+ */
+
+/*! superflycss/foundation | MIT License | https://github.com/superflycss/foundation/blob/master/LICENSE.md */
+/*! bootstrap v4.0.0-alpha | MIT License | https://github.com/twbs/bootstrap/blob/master/LICENSE */
+
+/* =======================================
+   Foundation
+   =======================================
+   Extensions / additions to normalize.css html element resets.
+   --------------------------------------
+   References
+   --------------------------------------
+   [BV - Bootstrap Variables](https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss)
+   [BR - Bootstrap Reboot](https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss)
+   [SB - SuitCSS Base](https://github.com/suitcss/base/blob/master/lib/base.css)
+   -------------------------------------- */
+
+/* --------------------------------------
+1a:
+  Import `superfly-css-variables-fonts` in order to set
+  the base font family.
+1b:
+  Import `superfly-css-variables-colors` in order to
+  access color variables.
+-------------------------------------- */
+
+@import "@superflycss/variables-colors";
+@import "@superflycss/variables-fonts";
+
+/**
+ * Element margin resets.
+ */
+fieldset,
+input,
+button,
+select,
+textarea,
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+
+iframe {
+  border: 0;
+}
+
+/**
+ * [SB] Work around a Firefox/IE bug where the transparent `button` background
+ * results in a loss of the default `button` focus styles.
+ */
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+/**
+ * [SB] Suppress the focus outline on elements that cannot be accessed via keyboard.
+ * This prevents an unwanted focus outline from appearing around elements that
+ * might still respond to pointer events.
+ */
+
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+/* --------------------------------------
+   [BR] Make the viewport responsive
+   https://css-tricks.com/snippets/html/responsive-meta-tag/
+   See the corresponding notes at the start of the [BR] file.
+   @viewport will replace <meta name="viewport">,
+   thus prefixing for forward compability is a good idea.
+   Autoprefixer used to generate corresponding vendor specific tags.
+   See:
+   https://github.com/twbs/bootstrap/issues/18188
+   -------------------------------------- */
+
+@viewport { width: device-width; }
+
+/* --------------------------------------
+2a:
+  [BR] Initialize the font-size of the html element
+  using the `font-size-root` variable in order to
+  scale (Using the REM unit) all typography.
+2b:
+  [BR] Change the default tap highlight to be
+  completely transparent in iOS.
+2c:
+  [BR] Set box sizing to border box
+  [Inheriting Box Sizing](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/)
+-------------------------------------- */
+
+html {
+/* 2a */
+  font-size: var(--font-size-root);
+/* 2b */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+/* 2c */
+  box-sizing: border-box;
+}
+
+/* 2c */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+/* --------------------------------------
+  3 : Declare base variables
+  3a:
+    Set the base background color.
+  3b:
+    Set the base text color.
+  3c:
+    Set the base font-family.
+  3d:
+    Set the base font-size to equal the font-size-root (1 REM = 16px0).
+  3e:
+    Set the base line-height.
+ -------------------------------------- */
+
+/* 3 */
+:root {
+  --base-background-color: var(--color-white);
+  --base-text-color:       var(--color-text);
+  --base-font-family:      var(--font-family-helvetica-neue);
+  --base-font-size:        1rem;
+  --base-line-height:      1.428571429;  /* 20/14 */
+  --base-link-hover-decoration: underline;
+}
+
+body {
+  /* 3a */
+  background-color: var(--base-background-color);
+  /* 3b */
+  color: var(--base-text-color);
+  /* 3c */
+  font-family: var(--base-font-family);
+  /* 3d */
+  font-size: var(--base-font-size);
+  /* 3e */
+  line-height: var(--base-line-height);
+}
+
+/* --------------------------------------
+  4:
+    Set the default media query breakpoints for
+    detecting devices in the following category set:
+    - extra-small (< 34em)
+    - small       (>=34em)
+    - medium      (>=48em)
+    - large       (>=62em)
+    - extra-large (>=75em)
+  [Reference](http://v4-alpha.getbootstrap.com/layout/responsive-utilities/)
+  [Reference](http://bradfrost.com/blog/post/7-habits-of-highly-effective-media-queries/)
+  [Reference](http://ryanchristiani.com/ems-in-media-queries/)
+  -------------------------------------- */
+
+/* 4 */
+:root {
+  --xs: 0;
+  --sm: 34em;    /* 544px  (16 * 34) */
+  --md: 48em;    /* 768px  (16 * 48) */
+  --lg: 62em;    /* 992px  (16 * 62) */
+  --xl: 75em;    /* 1200px (16 * 75) */
+}
+
+
+/* --------------------------------------
+   Set bottom margin for headings and paragraphs.
+   By default, `<h1>`-`<h6>` and p elements all have
+   no top margin as it avoids margin collapsing.
+  -------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+}
+
+/* Abbreviations */
+abbr[title],
+/* Add data-* attribute to help out our tooltip plugin,
+   per https://github.com/twbs/bootstrap/issues/5257 */
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted var(--color-abbr-border);
+}
+
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: var(--color-link-hover);
+    text-decoration: var(--base-link-hover-decoration);
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+address, p, blockquote, pre, figure {
+  margin-bottom: 1rem;
+}
+
+address {
+  font-style: normal;
+  line-height: inherit;
+}
+
+/* --------------------------------------
+Assumes that `<img>` elements are `inline-block`
+(The default).
+   -------------------------------------- */
+img {
+  vertical-align: middle;
+}
+
+
+/* --------------------------------------
+iOS "clickable elements" fix for role="button"
+
+Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+for traditionally non-focusable elements with role="button"
+see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+   -------------------------------------- */
+
+[role="button"] {
+  cursor: pointer;
+}
+
+/* --------------------------------------
+TABLES
+   5a:
+      Global table configuration variables
+   5b:
+      Transparent background color
+   5c:
+      Caption styling
+   5d:
+      left-align-ed th to match the `td`s below.
+   -------------------------------------- */
+
+/* 5a */
+:root {
+  --table-cell-padding: 0.75rem;
+}
+
+/* 5b */
+table {
+  background-color: var(--color-table-background);
+}
+
+/* 5c */
+caption {
+  padding-top: var(--table-cell-padding);
+  padding-bottom: var(--table-cell-padding);
+  color: var(--color-text-muted);
+  text-align: left;
+  caption-side: bottom;
+}
+
+/* 5d */
+
+th {
+  text-align: left;
+}
+
+/* Use `margin` for spacing. */
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+/* --------------------------------------
+FORM CONTROLS
+   6a:
+      Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
+      properly inherited. However, `line-height` isn't addressed there. Using this
+      ensures we don't need to unnecessarily redeclare the global font stack.
+   6b:
+      Reset iOS rounded borders
+   6c:
+      Set Text areas to only resize
+      vertically so they don't break their
+      (horizontal) containers.
+   6d:
+      Chrome and Firefox set a `min-width: min-content;` on fieldsets,
+      so we reset that to ensure it behaves more like a standard block element.
+      See https://github.com/twbs/bootstrap/issues/12359.
+      min-width: 0;
+      Reset the default outline behavior of
+      fieldsets so they don't affect page layout.
+    6e:
+      Reset the entire legend element to match the `fieldset`
+    6f:
+      Undo Normalize's default such that `box-sizing: border-box`
+      is in effect.
+      Override the extra rounded corners on search inputs in iOS so that our
+      form-control` class can properly style them. Note that this cannot simply
+      be added to `.form-control` as it's not specific enough. For details, see
+      https://github.com/twbs/bootstrap/issues/11586.
+
+   -------------------------------------- */
+input,
+button,
+select,
+textarea {
+  /* 6a */
+  line-height: inherit;
+  /* 6b */
+  border-radius: 0;
+}
+
+/* 6c */
+textarea {
+  resize: vertical;
+}
+
+/* 6d */
+fieldset {
+  padding: 0;
+  border: 0;
+}
+
+/* 6e */
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+  border: 0;
+}
+
+input[type="search"] {
+/* 6f */
+  box-sizing: inherit;
+/* 6g */
+  -webkit-appearance: none;
+}
+
+/*
+  Always hide an element with the `hidden` HTML attribute (from PureCSS).
+*/
+[hidden] {
+  display: none !important;
+}
