@@ -27,10 +27,10 @@
   },
   "homepage": "https://github.com/superflycss/foundation#readme",
   "devDependencies": {
-    "@superflycss/task-build": "^1.0.2",
+    "@superflycss/task-build": "^1.0.5",
     "@superflycss/task-clean": "^1.0.0",
     "gulp": "^3.9.1",
-    "npm-check-updates": "^2.11.3"
+    "npm-check-updates": "^2.12.0"
   },
   "dependencies": {
     "@superflycss/variables-colors": "^1.0.0",
