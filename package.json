@@ -1,13 +1,10 @@
 {
   "name": "@superflycss/foundation",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Extensions / additions to normalize.css html element resets.",
-  "main": "src/main/css/index.css",
+  "main": "index.css",
   "scripts": {
-    "update": "ncu -a && npm i",
-    "clean": "gulp clean",
-    "build": "npm run clean && gulp build:css",
-    "test": "npm run build && gulp test:css"
+    "update": "ncu -a && npm i"
   },
   "repository": {
     "type": "git",
@@ -27,14 +24,12 @@
   },
   "homepage": "https://github.com/superflycss/foundation#readme",
   "devDependencies": {
-    "@superflycss/task-build": "^1.0.5",
-    "@superflycss/task-clean": "^1.0.0",
-    "gulp": "^3.9.1",
-    "npm-check-updates": "^2.12.0"
+    "@superflycss/cli": "^1.9.1",
+    "npm-check-updates": "^2.14.2"
   },
   "dependencies": {
-    "@superflycss/variables-colors": "^1.0.0",
-    "@superflycss/variables-fonts": "^1.0.0",
-    "normalize.css": "^7.0.0"
+    "@superflycss/variables-colors": "^3.0.4",
+    "@superflycss/variables-fonts": "^3.0.0",
+    "normalize.css": "^8.0.0"
   }
 }

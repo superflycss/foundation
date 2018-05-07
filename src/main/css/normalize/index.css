@@ -1,0 +1,10 @@
+/* Separate the import of normalize.css 
+ * This enables foundation to proxy the import 
+ * of normalize.css.  Being able to import only
+ * parts of a package makes it easier to troubleshoot
+ * and isolate or other display related issues.
+ *
+ * For example foundation clients can import normalize.css like this:
+ * @import "@superflycss/foundation/normalize"
+ */
+@import "normalize.css";
