@@ -1,6 +1,6 @@
 {
   "name": "@superflycss/foundation",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Extensions / additions to normalize.css html element resets.",
   "main": "index.css",
   "scripts": {
@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/superflycss/foundation#readme",
   "devDependencies": {
-    "@superflycss/cli": "^1.9.1",
     "npm-check-updates": "^2.14.2"
   },
   "dependencies": {
