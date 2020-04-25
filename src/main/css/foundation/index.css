@@ -29,7 +29,7 @@
   access color variables.
 -------------------------------------- */
 
-@import "@superflycss/variables-colors";
+@import "@superflycss/utilities-colors/variables/notifications";
 @import "@superflycss/variables-fonts";
 
 /**
